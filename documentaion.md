@@ -14,6 +14,7 @@
 
 - [clip(clip)](https://konvajs.org/api/Konva.Group.html#clip__anchor)
 - [clipWidht](https://konvajs.org/api/Konva.Group.html#clipWidth__anchor)
+- [clipX](https://konvajs.org/api/Konva.Group.html#clipX__anchor)
 
 # Show/hide.
 

@@ -139,9 +139,12 @@ var layer = new Konva.Layer();
     let [nx,ny] = [this.x(),this.y()];
     let [dx,dy] = [nx - dragInfo.start[0], ny - dragInfo.start[1]];
     let [x,y] = [dragInfo.drag_start_cropper[0] + dx, dragInfo.drag_start_cropper[1] + dy];
+    let [cx,cy] = [cropperGroup.clipX() - dx, cropperGroup.clipY() - dy]
     console.log([nx,ny,dx,dy,x,y])
     cropperGroup.x(x);
     cropperGroup.y(y);
+    cropperGroup.clipX(cx);
+    cropperGroup.clipY(cy);
   })
 
   addAnchor(houseGroup, 0, 0, 'topLeft');
