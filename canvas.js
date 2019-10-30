@@ -101,6 +101,7 @@ var layer = new Konva.Layer();
     width: 635,
     height: 397
   });
+  houseImg.opacity(0.5)
 
   var houseGroup = new Konva.Group({
     x: 20,
@@ -117,7 +118,7 @@ var layer = new Konva.Layer();
   houseGroup.add(houseImg);
 
   // houseImg.visible(false)
-  houseGroup.opacity(0.5)
+  //houseGroup.opacity(0.5)
 
   
 
