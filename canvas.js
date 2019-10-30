@@ -116,7 +116,8 @@ var layer = new Konva.Layer();
   layer.add(houseGroup);
   houseGroup.add(houseImg);
 
-  houseImg.visible(false)
+  // houseImg.visible(false)
+  houseGroup.opacity(0.5)
 
   
 
