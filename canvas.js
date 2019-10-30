@@ -2,12 +2,17 @@ var width = 700;
 var height = 700;
 var cropperImg = {}
 var cropperGroup = {}
+var redSquare = {}
 
 
 var dragInfo = {
   drag_start: [0,0],
   drag_start_cropper: [0,0],
+  sq: [0,0],
+  clip: [0,0],
   reset: function(){
+    this.sq = [0,0]
+    this.clip = [0,0]
     this.drag_start = [0,0]; 
     this.drag_start_cropper = [0,0];
   }
@@ -132,6 +137,8 @@ var layer = new Konva.Layer();
     dragInfo.reset()
     dragInfo.start = [this.x(), this.y()]
     dragInfo.drag_start_cropper = [cropperGroup.x(), cropperGroup.y()]
+    dragInfo.sq = [redSquare.x(), redSquare.y()]
+    dragInfo.clip = [cropperGroup.clipX(), cropperGroup.clipY()];
     console.log(dragInfo)
   })
 
@@ -139,20 +146,29 @@ var layer = new Konva.Layer();
     let [nx,ny] = [this.x(),this.y()];
     let [dx,dy] = [nx - dragInfo.start[0], ny - dragInfo.start[1]];
     let [x,y] = [dragInfo.drag_start_cropper[0] + dx, dragInfo.drag_start_cropper[1] + dy];
+    let [sx,sy] = [dragInfo.sq[0] - dx, dragInfo.sq[1] - dy]
+    let [cx,cy] = [dragInfo.clip[0] - dx, dragInfo.clip[1] - dy]
+    
+
     console.log([nx,ny,dx,dy,x,y])
     cropperGroup.x(x);
     cropperGroup.y(y);
-  })
-
-  houseGroup.on("dragend", function(){
-    let [nx,ny] = [this.x(),this.y()];
-    let [dx,dy] = [nx - dragInfo.start[0], ny - dragInfo.start[1]];
-    let [x,y] = [dragInfo.drag_start_cropper[0] + dx, dragInfo.drag_start_cropper[1] + dy];
-    let [cx,cy] = [cropperGroup.clipX() - dx, cropperGroup.clipY() - dy]
-    console.log([nx,ny,dx,dy,x,y])
+    redSquare.x(sx);
+    redSquare.y(sy);
     cropperGroup.clipX(cx);
     cropperGroup.clipY(cy);
   })
+
+
+  redSquare = new Konva.Rect({
+    x: 150,
+    y: 40,
+    width: 250,
+    height: 300,
+    stroke: 'red',
+    strokeWidth: 1
+  });
+  houseGroup.add(redSquare)
 
   addAnchor(houseGroup, 0, 0, 'topLeft');
   addAnchor(houseGroup, 635, 0, 'topRight');
