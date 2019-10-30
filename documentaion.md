@@ -9,3 +9,12 @@
 - [Group](https://konvajs.org/api/Konva.Group.html) Groups are used to contain shapes or other groups. 
 - [Group.draggable(draggable)](https://konvajs.org/api/Konva.Group.html#draggable__anchor) get/set draggable flag.
 - [Circle.strokeWidth](https://konvajs.org/api/Konva.Circle.html#strokeWidth__anchor) get/set stroke width
+
+# Clipping 
+
+- [clip(clip)](https://konvajs.org/api/Konva.Group.html#clip__anchor)
+- [clipWidht](https://konvajs.org/api/Konva.Group.html#clipWidth__anchor)
+
+# Show/hide.
+
+- [visible(visible)](https://konvajs.org/api/Konva.Image.html#visible__anchor)

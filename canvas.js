@@ -106,15 +106,17 @@ var layer = new Konva.Layer();
     x: 20,
     y: 110,
     draggable: true,
-    clip: {
+    /*clip: {
       x: 0,
       y: 0,
       width: 125,
       height: 15
-    }
+    }*/
   });
   layer.add(houseGroup);
   houseGroup.add(houseImg);
+
+  houseImg.visible(false)
 
   
 
