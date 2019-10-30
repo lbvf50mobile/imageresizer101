@@ -105,10 +105,19 @@ var layer = new Konva.Layer();
   var houseGroup = new Konva.Group({
     x: 20,
     y: 110,
-    draggable: true
+    draggable: true,
+    clip: {
+      x: 0,
+      y: 0,
+      width: 125,
+      height: 15
+    }
   });
   layer.add(houseGroup);
   houseGroup.add(houseImg);
+
+  
+
   addAnchor(houseGroup, 0, 0, 'topLeft');
   addAnchor(houseGroup, 635, 0, 'topRight');
   addAnchor(houseGroup, 635, 397, 'bottomRight');
