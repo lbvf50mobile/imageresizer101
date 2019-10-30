@@ -1,5 +1,6 @@
 var width = 700;
 var height = 700;
+var cropperImg = {}
 function update(activeAnchor) {
     var group = activeAnchor.getParent();
 
@@ -33,12 +34,15 @@ function update(activeAnchor) {
     }
 
     image.position(topLeft.position());
+    cropperImg.position(topLeft.position());
 
     var width = topRight.getX() - topLeft.getX();
     var height = bottomLeft.getY() - topLeft.getY();
     if (width && height) {
       image.width(width);
       image.height(height);
+      cropperImg.width(width);
+      cropperImg.height(height);
     }
   }
 
@@ -101,7 +105,7 @@ var layer = new Konva.Layer();
     width: 635,
     height: 397
   });
-  houseImg.opacity(0.5)
+  houseImg.opacity(0.3)
 
   var houseGroup = new Konva.Group({
     x: 20,
@@ -128,8 +132,41 @@ var layer = new Konva.Layer();
   addAnchor(houseGroup, 0, 397, 'bottomLeft');
 
   var imageObj1 = new Image();
-      imageObj1.onload = function() {
-        houseImg.image(imageObj1);
-        layer.draw();
-      };
-      imageObj1.src = '1.png';
+  imageObj1.onload = function() {
+    houseImg.image(imageObj1);
+    layer.draw();
+  };
+  imageObj1.src = '1.png';
+
+
+  // Add cropping part.
+  // cropperImage
+  cropperImg = new Konva.Image({
+  width: 635,
+  height: 397
+});
+
+var cropperGroup = new Konva.Group({
+  x: 20,
+  y: 110,
+  draggable: false,
+  clip: {
+    x: 150,
+    y: 40,
+    width: 250,
+    height: 300,
+  }
+});
+layer.add(cropperGroup);
+cropperGroup.add(cropperImg);
+
+var imageObj2 = new Image();
+  imageObj2.onload = function() {
+    cropperImg.image(imageObj1);
+    layer.draw();
+  };
+  imageObj2.src = '1.png';
+
+
+
+ 
