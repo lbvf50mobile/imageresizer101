@@ -71,7 +71,7 @@ function addAnchor(group, x, y, name) {
       this.moveToTop();
     });
     anchor.on('dragend', function() {
-      group.draggable(true);
+      // group.draggable(true);
       layer.draw();
     });
     // add hover styling
@@ -110,7 +110,7 @@ var layer = new Konva.Layer();
   var houseGroup = new Konva.Group({
     x: 20,
     y: 110,
-    draggable: true,
+    draggable: false,
     /*clip: {
       x: 0,
       y: 0,
