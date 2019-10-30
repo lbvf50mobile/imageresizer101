@@ -1,6 +1,15 @@
 var width = 700;
 var height = 700;
 var cropperImg = {}
+console.log(155)
+var dragInfo = {
+  not_draged: true,
+  drag_start: [0,0],
+  delta: [0,0],
+  reset: function(){this.drag_start = [0,0]; this.drag_end = [0,0]; this.not_draged = true},
+  set_start: function(x,y){ if(this.not_draged){this.drag_start = [x,y]; this.not_draged = false;}},
+  set_end: function(x,y){ this.delta = [x - this.drag_start[0], y - x - this.drag_start[1]]}
+}
 function update(activeAnchor) {
     var group = activeAnchor.getParent();
 
@@ -71,7 +80,7 @@ function addAnchor(group, x, y, name) {
       this.moveToTop();
     });
     anchor.on('dragend', function() {
-      // group.draggable(true);
+      group.draggable(true);
       layer.draw();
     });
     // add hover styling
@@ -110,21 +119,10 @@ var layer = new Konva.Layer();
   var houseGroup = new Konva.Group({
     x: 20,
     y: 110,
-    draggable: false,
-    /*clip: {
-      x: 0,
-      y: 0,
-      width: 125,
-      height: 15
-    }*/
+    draggable: true,
   });
   layer.add(houseGroup);
   houseGroup.add(houseImg);
-
-  // houseImg.visible(false)
-  //houseGroup.opacity(0.5)
-
-  
 
   addAnchor(houseGroup, 0, 0, 'topLeft');
   addAnchor(houseGroup, 635, 0, 'topRight');
